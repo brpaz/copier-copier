@@ -9,6 +9,11 @@ template_name:
     template_name cannot be empty.
     {% endif %}
 
+template_slug:
+  type: str
+  default: "{{ template_name | lower | replace(' ', '-') }}"
+  when: false
+
 template_description:
   type: str
   help: A short description of your project.
