@@ -1,0 +1,26 @@
+_min_copier_version: 9.0.0
+_subdirectory: template
+
+template_name:
+  type: str
+  help: What is your project name?
+  validator: >-
+    {% if not template_name %}
+    template_name cannot be empty.
+    {% endif %}
+
+template_description:
+  type: str
+  help: A short description of your project.
+
+github_repo:
+  type: str
+  help: GitHub repository identifier (username/repo-name).
+  validator: >-
+    {% if not (github_repo | regex_search('^[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+$')) %}
+    github_repo must be in the format 'username/repo-name'.
+    {% endif %}
+
+# Global tasks
+_tasks:
+  - "git init"
